@@ -47,4 +47,49 @@ update categoria set nome = 'Ciência de Dados' where id = 4;
 
 select * from categoria;
 
+-----------------------------------------------------------------------------
+
+-- Praticando a criação de relátorios
+
+-- Relátorio dos alunos que estão matriculados em mais cursos, ordenados pelo numero de cursos
+
+select a.primeiro_nome, a.ultimo_nome,
+	   count(ac.curso_id) "Números de Cursos"
+	from aluno a
+	join aluno_curso ac on a.id = ac.aluno_id
+group by 1, 2
+order by "Números de Cursos" desc 
+	limit 1; -- Trazendo apenas a pessoa que fez mais cursos
+	
+
+-----------------------------------------------------------------------------
+
+-- Gerando relátorio dos cursos mais requisitados
+	
+select c.nome, count(ac.curso_id) "Números de Alunos"
+	from curso c
+	join aluno_curso ac on c.id = ac.curso_id
+group by 1
+order by "Números de Alunos" desc
+	limit 1; -- Trazendo apenas o curso com mais pessoas
+	
+
+-----------------------------------------------------------------------------
+
+-- Gerando relátorio da categoria mais requisitada
+
+select ca.nome, count(c.categoria_id) "Número de Cursos"
+	from categoria ca
+	join curso c on ca.id = c.categoria_id
+group by 1
+order by "Número de Cursos" desc
+	limit 1; -- Trazendo apenas a categoria com mais cursos
+	
+	
+	
+	
+	
+	
+
+
 
