@@ -97,3 +97,8 @@ select a.nome as "Nome do Aluno", c.nome as "Curso"
 	from aluno a 
 	cross join curso c;
 
+
+
+
+
+
